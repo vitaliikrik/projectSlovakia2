@@ -53,6 +53,7 @@ public class FakeItemRepository {
         Item founded = this.get(item.getId());
         int index = items.indexOf(founded);
         items.remove(founded);
+        item.setCreatedAt(founded.getCreatedAt());
         item.setUpdatedAt(LocalDateTime.now());
         items.add(index, item);
         return item;
@@ -63,5 +64,4 @@ public class FakeItemRepository {
         items.remove(itemToDelete);
         return itemToDelete;
     }
-
 }
