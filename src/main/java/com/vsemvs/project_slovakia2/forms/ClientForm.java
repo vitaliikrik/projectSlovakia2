@@ -7,14 +7,17 @@ import lombok.NoArgsConstructor;
 /*
   @author   Vitalii Krykun
   @project   project_slovakia2
-  @class  ItemForm
+  @class  ClientForm
   @version  1.0.0 
-  @since 7/22/2021 - 10.42
+  @since 7/30/2021 - 18.20
 */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ItemCreateForm {
+public class ClientForm {
     private String name;
     private String description;
+    private String address;
+    private String phoneNumber;
+    private String contactPerson;
 }

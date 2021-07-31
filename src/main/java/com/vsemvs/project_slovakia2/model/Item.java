@@ -1,6 +1,9 @@
 package com.vsemvs.project_slovakia2.model;
 
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -16,7 +19,10 @@ import java.util.Objects;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Document
 public class Item {
+
+    @Id
     private String id;
     private String name;
     private String description;

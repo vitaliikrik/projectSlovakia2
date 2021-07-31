@@ -1,6 +1,5 @@
 package com.vsemvs.project_slovakia2.model;
 
-import com.vsemvs.project_slovakia2.model.enums.DeliveryType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,24 +7,22 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Objects;
 
 /*
   @author   Vitalii Krykun
   @project   project_slovakia2
-  @class  Good
+  @class  Client
   @version  1.0.0 
-  @since 7/19/2021 - 19.15
+  @since 7/30/2021 - 15.03
 */
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Document
-public class Good {
+public class Client {
 
     @Id
     private String id;
@@ -34,22 +31,24 @@ public class Good {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    private BigDecimal price;
-    private List<DeliveryType> deliveryTypes;
+    private String address;
+    private String phoneNumber;
+    private String contactPerson;
 
-    public Good(String name, String description, BigDecimal price, List<DeliveryType> deliveryTypes) {
+    public Client(String name, String description, String address, String phoneNumber, String contactPerson) {
         this.name = name;
         this.description = description;
-        this.price = price;
-        this.deliveryTypes = deliveryTypes;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.contactPerson = contactPerson;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Good good = (Good) o;
-        return getId().equals(good.getId());
+        Client client = (Client) o;
+        return getId().equals(client.getId());
     }
 
     @Override

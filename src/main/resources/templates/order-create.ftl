@@ -3,17 +3,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Order creation</title>
 </head>
 <body>
-<h1>Creation</h1>
+<h1>Order Creation</h1>
 <div style="width: 60%; text-align: center">
     <fieldset>
-        <legend>Item create</legend>
-        <form name="item" action="" method="POST">
-            name:<@spring.formInput "form.name" "" "text"/>
+        <legend>Order create</legend>
+        <form name="good" action="" method="POST">
+            Client:<@spring.formInput "form.client" "" "text"/>
             <br>
-            Description:<@spring.formInput "form.description" "" "text"/>
+            Good:<@spring.formInput "form.good" "" "text"/>
             <br>
             <input type="submit" value="Create"/>
         </form>

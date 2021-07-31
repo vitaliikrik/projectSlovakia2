@@ -1,4 +1,4 @@
-package com.vsemvs.project_slovakia2.service.good.interfaces;
+package com.vsemvs.project_slovakia2.service.interfaces;
 
 import com.vsemvs.project_slovakia2.model.Good;
 
@@ -14,7 +14,7 @@ import java.util.List;
 public interface IGoodService {
     List<Good> getAll();
     Good get(String id);
-    Good create(Good Good);
-    Good update(Good Good);
+    Good create(Good good);
+    Good update(Good good);
     Good delete(String id);
 }

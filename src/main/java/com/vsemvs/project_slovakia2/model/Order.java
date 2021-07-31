@@ -8,48 +8,51 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Objects;
 
 /*
   @author   Vitalii Krykun
   @project   project_slovakia2
-  @class  Good
+  @class  Order
   @version  1.0.0 
-  @since 7/19/2021 - 19.15
+  @since 7/30/2021 - 15.12
 */
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Document
-public class Good {
+public class Order {
 
     @Id
     private String id;
-    private String name;
     private String description;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    private BigDecimal price;
-    private List<DeliveryType> deliveryTypes;
+    private Client client;
+    private Good good;
+    private DeliveryType deliveryType;
+    private int amount;
+    private LocalDate purchaseDate;
 
-    public Good(String name, String description, BigDecimal price, List<DeliveryType> deliveryTypes) {
-        this.name = name;
+    public Order(Client client, Good good, DeliveryType deliveryType, int amount, LocalDate purchaseDate, String description) {
+        this.client = client;
+        this.good = good;
+        this.deliveryType = deliveryType;
+        this.amount = amount;
+        this.purchaseDate = purchaseDate;
         this.description = description;
-        this.price = price;
-        this.deliveryTypes = deliveryTypes;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Good good = (Good) o;
-        return getId().equals(good.getId());
+        Order order = (Order) o;
+        return getId().equals(order.getId());
     }
 
     @Override

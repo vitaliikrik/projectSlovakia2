@@ -1,4 +1,4 @@
-package com.vsemvs.project_slovakia2.service.item.interfaces;
+package com.vsemvs.project_slovakia2.service.interfaces;
 
 import com.vsemvs.project_slovakia2.model.Item;
 

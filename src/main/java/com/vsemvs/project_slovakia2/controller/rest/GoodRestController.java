@@ -9,8 +9,7 @@ package com.vsemvs.project_slovakia2.controller.rest;
 */
 
 import com.vsemvs.project_slovakia2.model.Good;
-import com.vsemvs.project_slovakia2.model.Item;
-import com.vsemvs.project_slovakia2.service.good.interfaces.IGoodService;
+import com.vsemvs.project_slovakia2.service.interfaces.IGoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,13 +1,10 @@
 package com.vsemvs.project_slovakia2.controller.rest;
 
 import com.vsemvs.project_slovakia2.model.Item;
-import com.vsemvs.project_slovakia2.service.item.interfaces.IItemService;
+import com.vsemvs.project_slovakia2.service.interfaces.IItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /*

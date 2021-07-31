@@ -8,10 +8,10 @@ package com.vsemvs.project_slovakia2.controller.gui;
   @since 7/20/2021 - 11.35
 */
 
-import com.vsemvs.project_slovakia2.forms.ItemCreateForm;
+import com.vsemvs.project_slovakia2.forms.ItemForm;
 import com.vsemvs.project_slovakia2.model.Item;
-import com.vsemvs.project_slovakia2.service.item.interfaces.IItemService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.vsemvs.project_slovakia2.service.interfaces.IItemService;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -22,10 +22,10 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/gui/items")
+@AllArgsConstructor
 public class ItemGuiController {
 
-    @Autowired
-    IItemService service;
+    private IItemService service;
 
     @RequestMapping("/all")
     public String getAll(Model model) {
@@ -44,13 +44,13 @@ public class ItemGuiController {
     @RequestMapping("/create")
     public String create(ModelMap model) {
         //service.create();
-        ItemCreateForm formToCreate = new ItemCreateForm();
+        ItemForm formToCreate = new ItemForm();
         model.addAttribute("form", formToCreate);
         return "item-create";
     }
 
     @PostMapping("/create")
-    public ModelAndView create(ModelMap model, @ModelAttribute("form") ItemCreateForm form) {
+    public ModelAndView create(ModelMap model, @ModelAttribute("form") ItemForm form) {
         Item item = new Item(form.getName(), form.getDescription());
         service.create(item);
         return new ModelAndView("redirect:/gui/items/all", model);
@@ -59,14 +59,14 @@ public class ItemGuiController {
     @RequestMapping("/update/{id}")
     public String update(ModelMap model, @PathVariable String id) {
         Item item = service.get(id);
-        ItemCreateForm formToUpdate = new ItemCreateForm(item.getName(),
+        ItemForm formToUpdate = new ItemForm(item.getName(),
                 item.getDescription());
         model.addAttribute("form", formToUpdate);
         return "item-update";
     }
 
     @PostMapping("/update/{id}")
-    public ModelAndView update(ModelMap model, @ModelAttribute("form") ItemCreateForm form, @PathVariable String id) {
+    public ModelAndView update(ModelMap model, @ModelAttribute("form") ItemForm form, @PathVariable String id) {
         Item item = service.get(id);
         item.setName(form.getName());
         item.setDescription(form.getDescription());
