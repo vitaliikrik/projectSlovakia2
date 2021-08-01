@@ -64,8 +64,11 @@ public class OrderGuiController {
 
     @RequestMapping("/create")
     public String create(ModelMap model) {
-        //!!!!!!!!!!!!!!!!!!!!! GET CLIENT AND GOOD AS LISTS!!!!!!!!!!!!!!!!!!!!!!
+        Map<String, String> clientsMap = getClientsMap();
+        Map<String, String> goodsMap = getGoodsMap();
         OrderForm formToCreate = new OrderForm();
+        model.addAttribute("clients", clientsMap);
+        model.addAttribute("goods", goodsMap);
         model.addAttribute("form", formToCreate);
         return "order-create";
     }
@@ -94,17 +97,20 @@ public class OrderGuiController {
         DeliveryType deliveryTypeSelected = DeliveryType.valueOf(form.getDeliveryType());
         Client client = clientMongoRepository.findByName(form.getClient()).get(0);
         Good good = goodMongoRepository.findByName(form.getGood()).get(0);
-        Order order = new Order(client, good, deliveryTypeSelected, form.getAmount(), LocalDate.now(),
-                form.getDescription());//hardcoded date
+        Order order = new Order(client, good, deliveryTypeSelected, form.getAmount(),
+                LocalDate.parse(form.getPurchaseDate()), form.getDescription());
         orderService.create(order);
         return new ModelAndView("redirect:/gui/orders/all", model);
     }
 
     @RequestMapping("/update/{id}")
     public String update(ModelMap model, @PathVariable String id) {
-        //!!!!!!!!!!!!!!!!!!!!! GET CLIENT AND GOOD AS LISTS!!!!!!!!!!!!!!!!!!!!!!
+        Map<String, String> clientsMap = getClientsMap();
+        Map<String, String> goodsMap = getGoodsMap();
         Order order = orderService.get(id);
         OrderForm orderForm = new OrderForm(order);
+        model.addAttribute("clients", clientsMap);
+        model.addAttribute("goods", goodsMap);
         model.addAttribute("form", orderForm);
         return "order-update";
     }
@@ -143,9 +149,28 @@ public class OrderGuiController {
         order.setGood(good);
         order.setDeliveryType(deliveryTypeSelected);
         order.setAmount(form.getAmount());
-        order.setPurchaseDate(LocalDate.now());//hardcoded date
+        order.setPurchaseDate(LocalDate.parse(form.getPurchaseDate()));
         order.setDescription(form.getDescription());
         orderService.update(order);
         return new ModelAndView("redirect:/gui/orders/all", model);
+    }
+
+    private Map<String, String> getClientsMap() {
+        Map<String, String> clientsMap = new LinkedHashMap<>();
+        List<Client> clients = clientService.getAll();
+        clients.stream()
+                .map(Client::getName)
+                .forEach(stringName -> clientsMap.put(stringName, stringName));
+        return clientsMap;
+    }
+
+    private Map<String, String> getGoodsMap() {
+        Map<String, String> goodsMap = new LinkedHashMap<>();
+        List<Client> clients = clientService.getAll();
+        List<Good> goods = goodService.getAll();
+        goods.stream()
+                .map(Good::getName)
+                .forEach(stringName -> goodsMap.put(stringName, stringName));
+        return goodsMap;
     }
 }

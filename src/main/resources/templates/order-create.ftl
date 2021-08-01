@@ -11,9 +11,9 @@
     <fieldset>
         <legend>Order create</legend>
         <form name="good" action="" method="POST">
-            Client:<@spring.formInput "form.client" "" "text"/>
+            Client:<@spring.formSingleSelect "form.client" clients ""/>
             <br>
-            Good:<@spring.formInput "form.good" "" "text"/>
+            Good: <@spring.formSingleSelect "form.good" goods ""/>
             <br>
             <input type="submit" value="Create"/>
         </form>

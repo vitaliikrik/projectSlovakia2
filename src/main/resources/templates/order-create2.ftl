@@ -15,11 +15,11 @@
             <@spring.formInput "form.good" "" "hidden"/>
             Description:<@spring.formInput "form.description" "" "text"/>
             <br>
-            Delivery types:<@spring.formSingleSelect "form.deliveryType" validDeliveryTypes!'DELIVERY_TO_HOME' ""/>
+            Delivery types:<@spring.formSingleSelect "form.deliveryType" validDeliveryTypes ""/>
             <br>
             Amount:<@spring.formInput "form.amount" "" "text"/>
             <br>
-            Purchase date:<@spring.formInput "form.purchaseDate" "" "text"/>
+            Purchase date:<@spring.formInput "form.purchaseDate" "" "date"/>
             <br>
             <input type="submit" value="Create"/>
         </form>
