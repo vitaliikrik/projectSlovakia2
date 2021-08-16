@@ -9,8 +9,8 @@
 </head>
 <body>
 <h1>  Table of goods</h1>
-<div style="width: 60%; text-align: center">
-    <table class="table table-hover">
+<div style=" text-align: center">
+    <table class="table table-bordered border-primary" style="table-layout: auto; width: 100%;">
         <tr>
             <th>ID</th>
             <th>Name</th>
@@ -40,7 +40,7 @@
             </tr>
         </#list>
     </table>
-    <a href="/gui/goods/create">Create</a>
+    <a href="/gui/goods/create"><input type="button" class="btn btn-outline-primary" style="width: 100%;" value="Create"></a>
 </div>
 </body>
 </html>

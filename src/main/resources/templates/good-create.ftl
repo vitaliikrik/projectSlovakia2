@@ -11,7 +11,7 @@
     <fieldset>
         <legend>Good create</legend>
         <form name="good" action="" method="POST">
-            name:<@spring.formInput "form.name" "" "text"/>
+            Name:<@spring.formInput "form.name" "" "text"/>
             <br>
             Description:<@spring.formInput "form.description" "" "text"/>
             <br>

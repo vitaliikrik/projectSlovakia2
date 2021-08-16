@@ -10,7 +10,7 @@
 <body>
 <h1>  Table of items</h1>
 <div style="width: 60%; text-align: center">
-    <table class="table table-hover">
+    <table class="table table-bordered border-primary">
         <tr>
             <th>ID</th>
             <th>Name</th>

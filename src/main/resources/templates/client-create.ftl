@@ -11,16 +11,16 @@
     <fieldset>
         <legend>Client create</legend>
         <form name="client" action="" method="POST">
-            name:<@spring.formInput "form.name" "" "text"/>
-            <br>
+            Name:<@spring.formInput "form.name" "" "text"/>
+            <br/>
             Description:<@spring.formInput "form.description" "" "text"/>
-            <br>
+            <br/>
             Address:<@spring.formInput "form.address" "" "text"/>
-            <br>
+            <br/>
             Phone number:<@spring.formInput "form.phoneNumber" "" "text"/>
-            <br>
+            <br/>
             Contact person:<@spring.formInput "form.contactPerson" "" "text"/>
-            <br>
+            <br/>
             <input type="submit" value="Create"/>
         </form>
     </fieldset>
